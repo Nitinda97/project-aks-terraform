@@ -22,10 +22,12 @@ pipeline {
             }
         }
 		
-		stage('TF Init&Plan') {
+        stage('TF Init&Plan') {
         steps {
+          dir("terraform"){
           sh 'terraform init'
           sh 'terraform plan'
+	}
         }      
       }
 
@@ -39,7 +41,10 @@ pipeline {
 
       stage('TF Apply') {
         steps {
+	  dir("terraform")
+	{
           sh 'terraform apply -input=false'
+        }
         }
 		}
 		
