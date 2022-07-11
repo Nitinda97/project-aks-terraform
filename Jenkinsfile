@@ -6,7 +6,6 @@ pipeline {
 
     stages {
         
-        stages {
         stage('Code checkout') {
             steps{
             git credentialsId: 'git-cred-repo-priv', url: 'https://github.com/Nitinda97/project-aks-terraform.git'
